@@ -33,13 +33,20 @@ Main METHOD
     STATIC printMoreContestants()
     
         VAR previousYear = CONVERT TO INT (PROMPT USER ("Please enter the contestants for the previous year"))
+        WHILE (previousYear > 30 || previousYear < 0) {
+                previousYear = CONVERT TO INT (PROMPT USER ("The contestants should be between 0 - 30 inclusive. please retry"))
+        }
         VAR currYear = CONVERT TO INT (PROMPT USER("Please enter the contestants for this year"));
+        WHILE (currYear > 30 || currYear < 0) {
+                currYear = CONVERT TO INT (PROMPT USER ("The contestants should be between 0 - 30 inclusive. please retry"))
+        }
+
         PRINT FORMATTED: previousYear, currYear
           - "Last year's competition had {0} contestants, and this year's has {1} contestants"
         PRINT FORMATTED: currYear * 25
           - "Revenue expected this year is {0:C0}"
         IF (currYear > previousYear)
-            IF (currYear > 2 * previousYear)
+            IF (currYear == 2 * previousYear)
                 PRINT
                    - "The competition is more than twice as big this year!"
             ELSE
