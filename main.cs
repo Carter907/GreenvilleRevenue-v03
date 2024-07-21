@@ -38,18 +38,36 @@ Please Enter the following number below from the following menu:
     {
         Console.WriteLine("Please enter the contestants for the previous year");
         var previousYear = Convert.ToInt32(Console.ReadLine());
+        while (previousYear < 0 || previousYear > 30)
+        {
+            Console.WriteLine("The contestants should be between 0 - 30 inclusive. please retry");
+            previousYear = Convert.ToInt32(Console.ReadLine());
+        } 
+
         Console.WriteLine("Please enter the contestants for this year");
         var currYear = Convert.ToInt32(Console.ReadLine());
+        while (currYear < 0 || currYear > 30)
+        {
+            Console.WriteLine("The contestants should be between 0 - 30 inclusive. please retry");
+            currYear = Convert.ToInt32(Console.ReadLine());
+        } 
+
         Console.WriteLine("Last year's competition had {0} contestants, and this year's has {1} contestants", previousYear, currYear);
         Console.WriteLine("Revenue expected this year is {0:C0}", currYear * 25);
 
-        if (currYear > previousYear) {
-            if (currYear > 2 * previousYear) {
-              Console.WriteLine("The competition is more than twice as big this year!");
-            }
+        if (currYear > previousYear)
+        {
+            if (currYear == 2 * previousYear)
+            {
+                Console.WriteLine("The competition is more than twice as big this year!");
+            } else
             Console.WriteLine("The competition is bigger than ever!");
-          } else {
+            Console.WriteLine("pass");
+        }
+        else
+        {
             Console.WriteLine("A tighter race this year! Come out and cast your vote!");
-          }
+            Console.WriteLine("pass");
+        }
     }
 }
